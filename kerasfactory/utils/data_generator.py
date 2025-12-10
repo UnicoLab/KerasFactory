@@ -1,9 +1,24 @@
 """Data generation utilities for KerasFactory model testing and demonstrations."""
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 import numpy as np
-import tensorflow as tf
 import keras
+
+# Optional TensorFlow import for tf.data.Dataset functionality
+try:
+    import tensorflow as tf
+
+    _TENSORFLOW_AVAILABLE = True
+except ImportError:
+    _TENSORFLOW_AVAILABLE = False
+    tf = None
+
+# Type checking imports
+if TYPE_CHECKING:
+    if _TENSORFLOW_AVAILABLE:
+        from tensorflow.data import Dataset
+    else:
+        Dataset = None  # type: ignore
 
 
 class KerasFactoryDataGenerator:
@@ -52,8 +67,8 @@ class KerasFactoryDataGenerator:
         y = np.dot(X, true_weights) + noise_level * np.random.normal(0, 1, n_samples)
 
         # Normalize features
-        X_mean = tf.reduce_mean(X, axis=0)
-        X_std = tf.math.reduce_std(X, axis=0)
+        X_mean = np.mean(X, axis=0)
+        X_std = np.std(X, axis=0)
         X_normalized = (X - X_mean) / (X_std + 1e-8)
 
         # Split data
@@ -137,8 +152,8 @@ class KerasFactoryDataGenerator:
                 y[i] = np.argmin(distances)
 
         # Normalize features
-        X_mean = tf.reduce_mean(X, axis=0)
-        X_std = tf.math.reduce_std(X, axis=0)
+        X_mean = np.mean(X, axis=0)
+        X_std = np.std(X, axis=0)
         X_normalized = (X - X_mean) / (X_std + 1e-8)
 
         # Split data
@@ -218,8 +233,8 @@ class KerasFactoryDataGenerator:
         labels = np.hstack([np.zeros(n_normal), np.ones(n_anomalies)])
 
         # Normalize data
-        mean = tf.reduce_mean(all_data, axis=0)
-        std = tf.math.reduce_std(all_data, axis=0)
+        mean = np.mean(all_data, axis=0)
+        std = np.std(all_data, axis=0)
         scaled_data = (all_data - mean) / (std + 1e-8)
 
         # Split data
@@ -273,12 +288,12 @@ class KerasFactoryDataGenerator:
         y = (decision_boundary > np.median(decision_boundary)).astype(int)
 
         # Normalize features
-        X_mean = tf.reduce_mean(X, axis=0)
-        X_std = tf.math.reduce_std(X, axis=0)
+        X_mean = np.mean(X, axis=0)
+        X_std = np.std(X, axis=0)
         X_normalized = (X - X_mean) / (X_std + 1e-8)
 
-        context_mean = tf.reduce_mean(context, axis=0)
-        context_std = tf.math.reduce_std(context, axis=0)
+        context_mean = np.mean(context, axis=0)
+        context_std = np.std(context, axis=0)
         context_normalized = (context - context_mean) / (context_std + 1e-8)
 
         # Split data
@@ -329,8 +344,8 @@ class KerasFactoryDataGenerator:
                 data = np.random.exponential(1, (n_samples,) + shape)
 
             # Normalize
-            data_mean = tf.reduce_mean(data, axis=0)
-            data_std = tf.math.reduce_std(data, axis=0)
+            data_mean = np.mean(data, axis=0)
+            data_std = np.std(data, axis=0)
             data_normalized = (data - data_mean) / (data_std + 1e-8)
 
             # Split
@@ -423,8 +438,8 @@ class KerasFactoryDataGenerator:
         y: np.ndarray,
         batch_size: int = 32,
         shuffle: bool = True,
-    ) -> tf.data.Dataset:
-        """Create a TensorFlow dataset from data.
+    ) -> "tf.data.Dataset":
+        """Create a TensorFlow dataset from data (requires TensorFlow).
 
         Args:
             X: Input data (array or dict of arrays)
@@ -433,8 +448,17 @@ class KerasFactoryDataGenerator:
             shuffle: Whether to shuffle data
 
         Returns:
-            TensorFlow dataset
+            TensorFlow dataset (if TensorFlow is available)
+
+        Raises:
+            ImportError: If TensorFlow is not installed
         """
+        if not _TENSORFLOW_AVAILABLE:
+            raise ImportError(
+                "TensorFlow is required for create_dataset. "
+                "Install it with: pip install tensorflow",
+            )
+
         if isinstance(X, dict):
             # Multi-input data
             dataset = tf.data.Dataset.from_tensor_slices((X, y))
@@ -924,8 +948,8 @@ class KerasFactoryDataGenerator:
         y: np.ndarray,
         batch_size: int = 32,
         shuffle: bool = True,
-    ) -> tf.data.Dataset:
-        """Create a TensorFlow dataset from time series data.
+    ) -> "tf.data.Dataset":
+        """Create a TensorFlow dataset from time series data (requires TensorFlow).
 
         Args:
             X: Input sequences of shape (n_samples, seq_len, n_features).
@@ -936,12 +960,21 @@ class KerasFactoryDataGenerator:
         Returns:
             TensorFlow dataset with (X, y) pairs.
 
+        Raises:
+            ImportError: If TensorFlow is not installed
+
         Example:
             >>> X, y = KerasFactoryDataGenerator.generate_timeseries_data()
             >>> dataset = KerasFactoryDataGenerator.create_timeseries_dataset(X, y)
             >>> for x_batch, y_batch in dataset.take(1):
             ...     print(x_batch.shape, y_batch.shape)
         """
+        if not _TENSORFLOW_AVAILABLE:
+            raise ImportError(
+                "TensorFlow is required for create_timeseries_dataset. "
+                "Install it with: pip install tensorflow",
+            )
+
         dataset = tf.data.Dataset.from_tensor_slices((X, y))
 
         if shuffle:
