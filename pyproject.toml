@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kerasfactory"
-version = "0.1.0"
+version = "0.1.1"
 documentation = "https://unicolab.github.io/KerasFactory/"
 repository = "https://github.com/UnicoLab/KerasFactory"
 homepage = "https://unicolab.ai"
@@ -30,7 +30,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<3.13"
+python = ">=3.10,<4.0"
 loguru = "^0.7.2"
 keras = "^3.8.0"
 pytest = "^8.3.4"
