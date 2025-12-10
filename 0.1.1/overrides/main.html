@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.title == "Welcome to KerasFactory" %}
+    <div class="hero-section">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <img src="{{ 'kmr_logo.png' | url }}" alt="KerasFactory Logo" width="120" height="120">
+        </div>
+        <h1 class="hero-title">🚀 KerasFactory</h1>
+        <p class="hero-subtitle">🧩 Reusable Model Architecture Bricks in Keras 3</p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-number">40+</span>
+            <span class="stat-label">Layers</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Models</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Keras 3</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Possibilities</span>
+          </div>
+        </div>
+        <div class="hero-brand">
+          <span>🏢</span>
+          <span>Provided by <a href="https://unicolab.ai" target="_blank">UnicoLab</a></span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  {{ super() }}
+  
+  {% if page.title == "Welcome to KerasFactory" %}
+    <div class="cta-section">
+      <div class="cta-content">
+        <h2>🎯 Ready to Build Amazing Tabular Models?</h2>
+        <p>Join thousands of developers using KerasFactory to create sophisticated machine learning models with ease. Powered by UnicoLab's enterprise AI expertise.</p>
+        <div class="cta-buttons">
+          <a href="examples/README.md" class="md-button md-button--primary">📋 View Examples</a>
+          <a href="api/layers.md" class="md-button md-button--primary">🧩 Browse Layers</a>
+          <a href="contributing.md" class="md-button md-button--primary">🤝 Contribute</a>
+          <a href="https://unicolab.ai" class="md-button md-button--primary" target="_blank">🏢 UnicoLab</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
