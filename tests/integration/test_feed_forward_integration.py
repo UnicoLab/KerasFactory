@@ -486,6 +486,7 @@ class TestBaseFeedForwardIntegration:
             use_caching=False,  # Disable caching for testing
             log_to_file=False,
             features_specs=features_specs,
+            overwrite_stats=True,
         )
 
         # Build the KDP preprocessing model

@@ -69,11 +69,12 @@ class TestBaseFeedForwardKDPIntegration:
             "numeric_feature_2": NumericalFeature(name="numeric_feature_2"),
         }
 
-        # Create PreprocessingModel
+        # Create PreprocessingModel (overwrite_stats avoids CWD features_stats.json mismatch)
         preprocessing_model = PreprocessingModel(
             path_data=str(csv_path),
             batch_size=1000,
             features_specs=features_specs,
+            overwrite_stats=True,
         )
 
         # Build the preprocessor
@@ -114,6 +115,7 @@ class TestBaseFeedForwardKDPIntegration:
             path_data=str(train_path),
             batch_size=1000,
             features_specs=features_specs,
+            overwrite_stats=True,
         )
 
         # Build the preprocessor with training data
@@ -345,6 +347,7 @@ class TestBaseFeedForwardKDPIntegration:
             path_data=str(csv_path),
             batch_size=1000,
             features_specs=features_specs,
+            overwrite_stats=True,
         )
 
         processor.build_preprocessor()

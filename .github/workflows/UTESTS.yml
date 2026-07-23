@@ -8,7 +8,7 @@ on:
     paths:
       - "**.py"
       - "tests/**"
-      - "kmr/**"
+      - "kerasfactory/**"
   pull_request:
     branches:
       - dev
@@ -20,7 +20,7 @@ on:
     paths:
       - "**.py"
       - "tests/**"
-      - "kmr/**"
+      - "kerasfactory/**"
   workflow_dispatch:
     inputs:
       PYTHON_VERSION:
@@ -69,14 +69,14 @@ jobs:
     
     - name: Run linting
       run: |
-        poetry run ruff check kmr/ tests/ --select F,E,W,C4 --ignore ANN,D,UP,COM,SIM,PTH,S,B,N,ARG,ISC,E402,F401
-        poetry run black --check kmr/ tests/
+        poetry run ruff check kerasfactory/ tests/ --select F,E,W,C4 --ignore ANN,D,UP,COM,SIM,PTH,S,B,N,ARG,ISC,E402,F401
+        poetry run black --check kerasfactory/ tests/
     
     - name: Run type checking
-      run: poetry run mypy kmr/ --ignore-missing-imports --no-strict-optional
+      run: poetry run mypy kerasfactory/ --ignore-missing-imports --no-strict-optional
     
     - name: Run tests
-      run: poetry run pytest tests/ -v --cov=kmr --cov-report=xml --cov-report=html --ignore=tests/integration/
+      run: poetry run pytest tests/ -v --cov=kerasfactory --cov-report=xml --cov-report=html --ignore=tests/integration/
     
     - name: Upload coverage to Codecov
       if: matrix.python-version == 3.11

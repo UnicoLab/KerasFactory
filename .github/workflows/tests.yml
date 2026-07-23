@@ -8,7 +8,7 @@ on:
     paths:
       - "**.py"
       - "tests/**"
-      - "kmr/**"
+      - "kerasfactory/**"
       - "pyproject.toml"
       - "poetry.lock"
   pull_request:
@@ -18,7 +18,7 @@ on:
     paths:
       - "**.py"
       - "tests/**"
-      - "kmr/**"
+      - "kerasfactory/**"
       - "pyproject.toml"
       - "poetry.lock"
   workflow_dispatch:
@@ -82,10 +82,10 @@ jobs:
         run: poetry install --no-interaction
       
       - name: Run Ruff
-        run: poetry run ruff check kmr/ tests/ --select F,E,W,C4 --ignore ANN,D,UP,COM,SIM,PTH,S,B,N,ARG,ISC,E402,F401
+        run: poetry run ruff check kerasfactory/ tests/ --select F,E,W,C4 --ignore ANN,D,UP,COM,SIM,PTH,S,B,N,ARG,ISC,E402,F401
       
       - name: Run Black
-        run: poetry run black --check kmr/ tests/
+        run: poetry run black --check kerasfactory/ tests/
   
   type-check:
     name: Type Check (Python ${{ matrix.python-version }})
@@ -129,7 +129,7 @@ jobs:
         run: poetry install --no-interaction
       
       - name: Run MyPy
-        run: poetry run mypy kmr/ --ignore-missing-imports --no-strict-optional
+        run: poetry run mypy kerasfactory/ --ignore-missing-imports --no-strict-optional
   
   unit-tests:
     name: Unit Tests (Python ${{ matrix.python-version }})
@@ -176,7 +176,7 @@ jobs:
         run: |
           poetry run pytest tests/ \
             -v \
-            --cov=kmr \
+            --cov=kerasfactory \
             --cov-report=xml \
             --cov-report=html \
             --cov-report=term \
@@ -238,7 +238,7 @@ jobs:
         run: |
           poetry run pytest tests/integration/ \
             -v \
-            --cov=kmr \
+            --cov=kerasfactory \
             --cov-append \
             --cov-report=xml \
             --cov-report=html \

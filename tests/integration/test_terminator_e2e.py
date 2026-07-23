@@ -221,6 +221,7 @@ class TestTerminatorModelE2E:
             path_data=str(csv_path),
             batch_size=1000,
             features_specs=input_features_specs,
+            overwrite_stats=True,
         )
 
         # Build the preprocessor with full dataset

@@ -103,7 +103,6 @@ nav:
       - TabularMoELayer: layers/tabular-moe-layer.md
       - BoostingBlock: layers/boosting-block.md
       - BoostingEnsembleLayer: layers/boosting-ensemble-layer.md
-      - BusinessRulesLayer: layers/business-rules-layer.md
       - StochasticDepth: layers/stochastic-depth.md
       - SlowNetwork: layers/slow-network.md
       - HyperZZWOperator: layers/hyper-zzw-operator.md
@@ -111,8 +110,15 @@ nav:
       - AdvancedGraphFeature: layers/advanced-graph-feature.md
       - GraphFeatureAggregation: layers/graph-feature-aggregation.md
       - MultiHeadGraphFeaturePreprocessor: layers/multi-head-graph-feature-preprocessor.md
+    - 🚨 Anomaly Detection:
       - NumericalAnomalyDetection: layers/numerical-anomaly-detection.md
+      - StatisticalNumericalAnomalyDetection: layers/statistical-numerical-anomaly-detection.md
       - CategoricalAnomalyDetectionLayer: layers/categorical-anomaly-detection-layer.md
+      - GlobalAnomalyMergeLayer: layers/global-anomaly-merge-layer.md
+      - MultiFeatureBusinessRulesLayer: layers/multi-feature-business-rules-layer.md
+      - AggregationLevelLayer: layers/aggregation-level-layer.md
+      - GroupStatisticsLayer: layers/group-statistics-layer.md
+      - BusinessRulesLayer: layers/business-rules-layer.md
     - ⏰ Time Series:
       - MovingAverage: layers/moving-average.md
       - SeriesDecomposition: layers/series-decomposition.md
@@ -150,6 +156,9 @@ nav:
       - SFNEBlock: models/sfne-block.md
       - TerminatorModel: models/terminator-model.md
       - Autoencoder: models/autoencoder.md
+      - FeatureSpaceAnomalyDetectionModel: models/feature-space-anomaly-detection-model.md
+      - KerasStratifiedAnomalyModel: models/keras-stratified-anomaly-model.md
+      - StratifiedAnomalyDetectionModel: models/stratified-anomaly-detection-model.md
     - Metrics: api/metrics.md
     - Utils: api/utils.md
   - 🤝 Contributing:

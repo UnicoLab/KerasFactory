@@ -35,6 +35,15 @@ from kerasfactory.layers.MultiResolutionTabularAttention import (
 from kerasfactory.layers.VariableSelection import VariableSelection
 from kerasfactory.layers.AdvancedGraphFeature import AdvancedGraphFeatureLayer
 from kerasfactory.layers.NumericalAnomalyDetection import NumericalAnomalyDetection
+from kerasfactory.layers.StatisticalNumericalAnomalyDetection import (
+    StatisticalNumericalAnomalyDetection,
+)
+from kerasfactory.layers.GlobalAnomalyMergeLayer import GlobalAnomalyMergeLayer
+from kerasfactory.layers.MultiFeatureBusinessRulesLayer import (
+    MultiFeatureBusinessRulesLayer,
+)
+from kerasfactory.layers.AggregationLevelLayer import AggregationLevelLayer
+from kerasfactory.layers.GroupStatisticsLayer import GroupStatisticsLayer
 from kerasfactory.layers.CategoricalAnomalyDetectionLayer import (
     CategoricalAnomalyDetectionLayer,
 )
@@ -97,6 +106,11 @@ __all__ = [
     "MultiScaleTrendMixing",
     "MovingAverage",
     "NumericalAnomalyDetection",
+    "StatisticalNumericalAnomalyDetection",
+    "GlobalAnomalyMergeLayer",
+    "MultiFeatureBusinessRulesLayer",
+    "AggregationLevelLayer",
+    "GroupStatisticsLayer",
     "PastDecomposableMixing",
     "PositionalEmbedding",
     "ReversibleInstanceNorm",

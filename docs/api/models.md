@@ -104,3 +104,21 @@ Advanced autoencoder model for anomaly detection with optional preprocessing int
 Base class for all KerasFactory models, providing common functionality and Keras 3 compatibility.
 
 ::: kerasfactory.models._base.BaseModel
+
+## 🚨 Anomaly Detection
+
+### FeatureSpaceAnomalyDetectionModel
+Multi-feature statistical + business-rule anomaly detection model.
+
+::: kerasfactory.models.FeatureSpaceAnomalyDetectionModel
+
+### KerasStratifiedAnomalyModel
+End-to-end Keras stratified anomaly model using `GroupStatisticsLayer`.
+
+::: kerasfactory.models.KerasStratifiedAnomalyModel
+
+### StratifiedAnomalyDetectionModel
+Per-group `FeatureSpaceAnomalyDetectionModel` ensemble with fallback strategies.
+
+::: kerasfactory.models.StratifiedAnomalyDetectionModel
+

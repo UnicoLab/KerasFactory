@@ -273,11 +273,41 @@ Specialized hyperparameter operator for advanced transformations.
 ## 🚨 Anomaly Detection
 
 ### 📉 NumericalAnomalyDetection
-Detects anomalies in numerical features using statistical methods.
+Autoencoder-based numerical anomaly detection.
 
 ::: kerasfactory.layers.NumericalAnomalyDetection
+
+### 📐 StatisticalNumericalAnomalyDetection
+Statistical numerical anomaly detection (z-score, IQR, MAD).
+
+::: kerasfactory.layers.StatisticalNumericalAnomalyDetection
 
 ### 📊 CategoricalAnomalyDetectionLayer
 Detects anomalies in categorical features.
 
 ::: kerasfactory.layers.CategoricalAnomalyDetectionLayer
+
+### 🔗 GlobalAnomalyMergeLayer
+Merges feature-level anomaly outputs into row-level predictions.
+
+::: kerasfactory.layers.GlobalAnomalyMergeLayer
+
+### 📋 MultiFeatureBusinessRulesLayer
+Cross-feature when/require business rules.
+
+::: kerasfactory.layers.MultiFeatureBusinessRulesLayer
+
+### 📦 AggregationLevelLayer
+Aggregates statistics and rules across feature groups.
+
+::: kerasfactory.layers.AggregationLevelLayer
+
+### 🧩 GroupStatisticsLayer
+Stratified group statistics and z-score anomaly scores.
+
+::: kerasfactory.layers.GroupStatisticsLayer
+
+### 🏗️ BusinessRulesLayer
+Per-feature business rule evaluation.
+
+::: kerasfactory.layers.BusinessRulesLayer

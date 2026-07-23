@@ -314,6 +314,7 @@ def test_kdp_preprocessing_model(test_data):
             tabular_attention=False,
             use_feature_moe=False,
             feature_selection_placement=None,
+            overwrite_stats=True,
         )
 
         # Build the preprocessor
@@ -486,6 +487,7 @@ def test_improved_kdp_preprocessing(test_data):
             tabular_attention=False,  # Keep disabled for simplicity
             use_feature_moe=False,  # Keep disabled for simplicity
             feature_selection_placement=None,
+            overwrite_stats=True,
         )
 
         # Build the preprocessor
